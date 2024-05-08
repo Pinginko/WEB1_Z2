@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Formulár</div>
+        <form action="https://form2mail.iolab.sk/form2mail.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="apikey" value="d6117ff9d227e2ac1f9788a3eb3ab791">
+            <input type="hidden" name="from" value="xkubala@stuba.sk">
+            <input type="hidden" name="sender" value="Samuel Kubala">
+            <input type="hidden" name="to" value="feistu02@gmail.com">
+            <!-- Pri odovzdani nezabudnut zmenit mail na feistu... podla cviciaceho -->
+            <input type="hidden" name="subject" value="Formular WEBTE">
+            <input type="hidden" name="redirectOk"
+                value="https://webte1.fei.stuba.sk/~xkubala/nehasiaciPristroj/web/success.html">
+            <input type="hidden" name="redirectFalse"
+                value="https://webte1.fei.stuba.sk/~xkubala/nehasiaciPristroj/web/failure.html">
+
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Letovisko*</span>
+                    <select class="required" name="Lokalita" id="summer-location"
+                        onmousedown="validateIsEmpty('summer-location','err-summer-location')"
+                        onblur="validateIsEmpty('summer-location','err-summer-location')">
+                        <option value="">Vyber si letovisko !</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Taliansko">Taliansko</option>
+                        <option value="Tunisko">Tunisko</option>
+                        <option value="Španielsko">Španielsko</option>
+                        <option value="Francúzsko">Francúzsko</option>
+                        <option value="Švédsko">Švédsko</option>
+                        <option value="Kuba">Kuba</option>
+                    </select>
+                    <div class="error" id="err-summer-location">Toto pole je prázdne!</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Počet osôb*</span>
+                    <input type="number" class="required" placeholder="7" id="num-people" name="Počet ľudí" max="8"
+                        min="1" onmousedown="validateNumbers('num-people','err-num-people', 'err-num-people2')"
+                        onblur="validateNumbers('num-people','err-num-people', 'err-num-people2')">
+                    <div class="error" id="err-num-people">Toto pole je prázdne!</div>
+                    <div class="error" id="err-num-people2">Maximálny počet je 8 !</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Kedy pôjdete ?*</span>
+                    <input type="datetime-local" name="Čas odchodu" id="timeVenue" class="required"
+                        onmousedown="validateDatetimeLocalInput('timeVenue', 'err-time-venue')"
+                        onblur="validateDatetimeLocalInput('timeVenue', 'err-time-venue')">
+                    <div class="error" id="err-time-venue">V tento deň to nepôjde !</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Cena*</span>
+                    <select name="Cena" id="price" class="required"
+                        onmousedown="validateIsEmpty('price','err-select-price')"
+                        onblur="validateIsEmpty('price','err-select-price')">
+                        <option value="">Ako dlho ?</option>
+                        <option value="300€">300€ -> 4 dní</option>
+                        <option value="550€">550€ -> 8 dní</option>
+                        <option value="800€">800€ -> 10 dní</option>
+                        <option value="1100€">1100€ -> 14 dní</option>
+                    </select>
+                    <div class="error" id="err-select-price">Toto pole je prázdne!</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Meno*</span>
+                    <input type="text" placeholder="Janko" id="first-name" name="Meno" class="input required"
+                        maxlength="50" onmousedown="validateInputs('first-name','err-name','err-name2')"
+                        onblur="validateInputs('first-name','err-name','err-name2')">
+                    <div class="counter">0/50</div>
+                    <div class="error" id="err-name">Toto pole je prázdne!</div>
+                    <div class="error" id="err-name2">Zadaj aspoň 3 alfabetické znaky !</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Priezvisko*</span>
+                    <input type="text" placeholder="Hraško" id="sur-name" name="Priezvisko" class="input required"
+                        maxlength="50" onmousedown="validateInputs('sur-name','err-surname','err-surname2')"
+                        onblur="validateInputs('sur-name','err-surname','err-surname2')">
+                    <div class="counter">0/50</div>
+                    <div class="error" id="err-surname">Toto pole je prázdne!</div>
+                    <div class="error" id="err-surname2">Zadaj aspoň 3 alfabetické znaky !</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Telefón*</span>
+                    <input type="text" placeholder="+421940875857" id="phone-number" class="required" name="Tel.číslo"
+                        onmousedown="checkMobileNumber('phone-number','err-mobile')"
+                        onblur="checkMobileNumber('phone-number','err-mobile')">
+                    <div class="error" id="err-mobile">Tel.číslo je nevalídne!</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">E-mail*</span>
+                    <input type="text" placeholder="jankohrasko@gmail.com" id="e-mail" name="E-mail"
+                        class="input required" maxlength="50" onmousedown="checkEmail('e-mail','err-email')"
+                        onblur="checkEmail('e-mail','err-email')">
+                    <div class="counter">0/50</div>
+                    <div class="error" id="err-email">E-mail je nevalídny!</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Dátum narodenia*</span>
+                    <input type="date" name="Dátum narodenia" id="birth" class="required"
+                        onmousedown="validateIsEmpty('birth', 'err-birth')"
+                        onblur="validateAge('age', 'err-age','birth')">
+                    <div class="error" id="err-birth">Toto pole je prázdne!</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Vek*</span>
+                    <input type="text" name="Vek" id="age" class="required" placeholder="Vyplň dátum narodenia !"
+                        onblur="validateAge('age', 'err-age','birth')">
+                    <div class="error" id="err-age">Toto pole je prázdne !</div>
+                    <div class="error" id="err-age2">Neplatný vek !</div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Pohlavie</span>
+                    <select name="Pohlavie" id="genders">
+                        <optgroup label="Pohlavie">
+                            <option value="Muž">Muž</option>
+                            <option value="Žena">Žena</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="input-box" id="check-group">
+                    <span class="details">Aká vlastnosť ťa popisuje ?</span>
+                    <label class="checkbox-label" id="option1">
+                        <input type="checkbox" name="Vlastnosť" value="Dobrosrdečný" class="checkbox">
+                        Dobrosrdečný
+                    </label>
+                    <label class="checkbox-label" id="option2">
+                        <input type="checkbox" name="Vlastnosť" value="Nervózny" class="checkbox">
+                        Nervózny
+                    </label>
+                    <div class="checkbox-label">
+                        <input type="checkbox" name="Vlastnosť" value="Iná hodnota" class="checkbox" id="option3">
+                        Iné
+                        <input type="text" name="Iná hodnota" class="hidden">
+                    </div>
+                </div>
+
+                <div class="input-box" id="button-group">
+                    <span class="details">Aký šport máš radšej ?</span>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" id="soccer" name="Šport" value="Futbal">
+                            Futbal
+                        </label>
+                    </div>
+
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" id="hockey" name="Šport" value="Hokej">
+                            Hokej
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Aký tím ?</span>
+                    <select name="Tím" id="team">
+                        <option value="">Najprv zaškrtni aký šport máš radšej!</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Štát</span>
+                    <select name="Štát" id="country">
+                        <optgroup label="Štát">
+                            <option value="">Vyber krajinu v ktorej žiješ !</option>
+                            <option value="Slovensko">Slovenská republika</option>
+                            <option value="Česko">Česká republika</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Kraj</span>
+                    <select name="Kraj" id="state">
+                        <optgroup label="Kraj"></optgroup>
+                        <option value="">Najprv vyber krajinu v ktorej žiješ !</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Mesto</span>
+                    <select name="Mesto" id="city">
+                        <optgroup label="Mesto"></optgroup>
+                        <option value="">Najprv vyber kraj v ktorom žiješ !</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Špeciálne požiadavky</span>
+                    <textarea name="Špeciálne požiadavky" id="special-requirements" cols="45" rows="10"></textarea>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Tajuplné tlačidlo :O</span>
+                    <button type="button" id="secret-button" onclick="showTextArea()">Odkry</button>
+                    <div class="comment" id="comment" style="display:none;">
+                        <textarea class="textinput">Samuel Kubala</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button id="open-modal-button" type="button">Odoslať</button>
+
+            <dialog id="form-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-box">
+                        <span class="details">Letovisko:</span>
+                        <span id="modal-summer-location"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Počet osôb:</span>
+                        <span id="modal-num-people"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Čas odchodu:</span>
+                        <span id="modal-timeVenue"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Cena:</span>
+                        <span id="modal-price"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Meno:</span>
+                        <span id="modal-first-name"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Priezvisko:</span>
+                        <span id="modal-sur-name"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Telefón:</span>
+                        <span id="modal-mobile-number"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">E-mail:</span>
+                        <span id="modal-email"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Dátum narodenia:</span>
+                        <span id="modal-birth"></span>
+                    </div>
+
+                    <div class="modal-box">
+                        <span class="details">Vek:</span>
+                        <span id="modal-age"></span>
+                    </div>
+
+                    <button type="button" id="btn-close-modal"
+                        onclick="document.getElementById('form-modal').close()">Close</button>
+                    <button type="submit" id="btn-submit-modal">Pošli</button>
+                </div>
+
+            </dialog>
+        </form>
+    </div>
+
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
